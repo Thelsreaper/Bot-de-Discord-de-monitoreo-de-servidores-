@@ -1,0 +1,39 @@
+timeout: 5                  # segundos por consulta
+poll_seconds: 30            # cada cuánto se consultan los servidores
+panel_refresh_seconds: 30   # cada cuánto se editan los paneles
+db_path: data/gamebot.db
+
+# Campos comunes:
+#   id           -> identificador corto, único (sin espacios)
+#   name         -> nombre mostrado en Discord
+#   type         -> minecraft | bedrock | a2s | tcp  (ver providers/)
+#   host         -> IP interna que consulta el bot
+#   public_host  -> IP/dominio mostrado en Discord (opcional)
+#   port         -> puerto de juego (mostrado)
+#   query_port   -> puerto de consulta (a2s; minecraft con query)
+#   query        -> minecraft: true = lista completa de jugadores
+#                   (requiere enable-query=true en server.properties)
+
+servers:
+  - id: minecraft
+    name: Minecraft Survival
+    type: minecraft
+    host: 192.168.20.10
+    public_host: mc.tudominio.com
+    port: 25565
+    query: true
+
+  - id: ark
+    name: ARK The Island
+    type: a2s
+    host: 192.168.20.10
+    public_host: ark.tudominio.com
+    port: 7777
+    query_port: 27015
+
+  - id: hytale
+    name: Hytale
+    type: tcp                # solo estado; sirve si el puerto es TCP
+    host: 192.168.20.10
+    public_host: hytale.tudominio.com
+    port: 5520               # ajusta al puerto real

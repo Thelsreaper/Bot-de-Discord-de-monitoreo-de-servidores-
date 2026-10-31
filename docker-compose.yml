@@ -1,0 +1,20 @@
+services:
+  gamebot:
+    build: .
+    container_name: gamebot
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      CONFIG_PATH: /app/config.yml
+    volumes:
+      - ./config.yml:/app/config.yml:ro
+      - ./data:/app/data        # SQLite (paneles y ranking)
+    tmpfs:
+      - /tmp
+    mem_limit: 256m
+    cpus: 0.5
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
